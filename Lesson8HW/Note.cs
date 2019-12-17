@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lesson8HW
 {
-    class Program
+    class Note
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine();
-        }
+        public DateTime Date { get; set; }
+        public string NoteText { get; set; }
     }
 }
