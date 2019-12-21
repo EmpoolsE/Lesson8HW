@@ -19,7 +19,10 @@ namespace Lesson8HW
         }
         public static User GetUserInfo(string login)
         {
-            return null;
+            FileStream stream = File.OpenRead(@"Users\" + Regex.Replace(login, "@[a-zA-Z0-9.-]+[.]{1}[a-z]{2,}", "") + ".dat");
+            BinaryFormatter formatter = new BinaryFormatter();
+            User user = formatter.Deserialize(stream) as User;
+            return user;
         }
         public static bool SaveUserInfo(User user)
         {

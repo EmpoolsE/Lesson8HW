@@ -11,7 +11,9 @@ namespace Lesson8HW
     {
         private bool loged = false;
         private User user;
-        
+        public bool Logged { get {
+                return loged;
+            } }
         public string Register(string login, string password)
         {
             if (!Regex.Match(login, "^[a-zA-Z0-9.-]{3,}@[a-z]{3,}[.]{1}[a-z]{2,}").Success || UserInfo.UserExist(login))
@@ -29,22 +31,58 @@ namespace Lesson8HW
                 return "Wrong Login!";
             }
             user = UserInfo.GetUserInfo(login);
-            loged = true;
-            return "Welcome";
+            if (user.Password == password)
+            {
+                loged = true;
+                return "Welcome";
+            }
+            else
+            {
+                loged = false;
+                user = null;
+                return "Wrong password";
+            }
+            
         }
 
         public List<Note> GetNotes()
         {
-            return new List<Note>();
+            if (loged)
+            {
+                return user.notes;
+            }
+            else
+            {
+                Console.WriteLine("Must be logged");
+                return null;
+            }
+            
         }
         public Note GetNote(DateTime date)
         {
-            return new Note();
+            if (loged)
+            {
+                return user.notes.Single(s => s.Date == date);
+            }
+            else
+            {
+                Console.WriteLine("Must be logged");
+                return null;
+            }
+            
         }
         
         public string SaveNote(string text)
         {
-            return "saved";
+            if (loged)
+            {
+                user.SaveNote(new Note() { Date = DateTime.Now, NoteText = text});
+                return "Saved";
+            }
+            else
+            {
+                return "Must be logged";
+            }
         }
     }
 }

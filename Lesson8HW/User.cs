@@ -13,7 +13,7 @@ namespace Lesson8HW
         public string Login { get; set; }
         public string Password { get; set; }
 
-        List<Note> notes = new List<Note>();
+        public List<Note> notes = new List<Note>();
         public void SaveNote(Note note)
         {
             notes.Add(note);
