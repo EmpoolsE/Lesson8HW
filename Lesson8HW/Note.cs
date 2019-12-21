@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lesson8HW
 {
-    class Note
+    public class Note
     {
         public DateTime Date { get; set; }
         public string NoteText { get; set; }

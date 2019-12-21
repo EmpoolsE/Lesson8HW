@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace Lesson8HW
 {
-    class User
+    [Serializable]
+    public class User
     {
         private string password;
         public string Login { get; set; }
         public string Password { get; set; }
 
         List<Note> notes = new List<Note>();
+        public void SaveNote(Note note)
+        {
+            notes.Add(note);
+
+        }
     }
 }
