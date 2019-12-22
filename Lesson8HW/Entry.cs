@@ -76,7 +76,8 @@ namespace Lesson8HW
         {
             if (loged)
             {
-                user.SaveNote(new Note() { Date = DateTime.Now, NoteText = text});
+                user.SaveNote(new Note() { Date = DateTime.Now.Date, NoteText = text});
+                UserInfo.SaveUserInfo(user);
                 return "Saved";
             }
             else

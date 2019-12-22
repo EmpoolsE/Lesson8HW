@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lesson8HW
 {
+    [Serializable]
     public class Note
     {
         public DateTime Date { get; set; }
